@@ -5,9 +5,9 @@ exports.up = function(knex) {
       tbl.increments('recipe_id')
       tbl.string('recipe_name', 128)
       tbl.timestamps('created_at', 128)
-      tbl.integer('steps')
+      tbl.integer('steps_id')
       .unsigned()
-      .notNullable()
+      
       .references('steps_id')
       .inTable('steps')
       .onDelete('RESTRICT')
@@ -19,7 +19,7 @@ exports.up = function(knex) {
       tbl.string('step_text', 128)
       tbl.integer('step_ingredients_id')
         .unsigned()
-        .notNullable()
+        
         .references('step_ingredients_id')
         .inTable('step_ingredients')
         .onDelete('RESTRICT')
@@ -31,7 +31,7 @@ exports.up = function(knex) {
       tbl.string('ingredient_name', 128)
       tbl.integer('step_ingredients_id')
       .unsigned()
-      .notNullable()
+    
       .references('step_ingredients_id')
       .inTable('step_ingredients')
       .onDelete('RESTRICT')
@@ -41,14 +41,14 @@ exports.up = function(knex) {
       tbl.increments('steps_ingredients_id')
       tbl.integer('steps_id')
         .unsigned()
-        .notNullable()
+       
         .references('steps_id')
         .inTable('steps')
         .onDelete('RESTRICT')
         .onUpdate('RESTRICT')
      tbl.integer('ingredients_id')
         .unsigned()
-        .notNullable()
+       
         .references('ingredients_id')
         .inTable('ingredients')
         .onDelete('RESTRICT')
